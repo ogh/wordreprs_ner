@@ -1,0 +1,34 @@
+#!/bin/sh
+clear
+
+cpath="LBJ2.jar:LBJ2Library.jar:bin:stanford-ner.jar:stanford-ner.src.jar:lucene-core-2.4.1.jar"
+
+rm bin/ParsingProcessingData/*.class 
+rm bin/ExpressiveFeatures/*.class 
+rm bin/DebuggingAndTesting/*.class 
+rm bin/ClientServer/*.class 
+rm bin/IO/*.class 
+rm bin/StringStatisticsUtils/*.class  
+rm bin/LbjTagger/*.class
+rm bin/LbjFeatures/*.class 
+rm bin/LbjFeatures/*.lc 
+rm bin/InferenceMethods/*.class
+rm bin/Experiments/*.class
+rm bin/Experiments/ExperimentsHMM/*.class
+rm bin/Experiments/ExperimentsNoConvergence/*.class
+rm bin/Experiments/NaaclExperiments/*.class
+rm bin/Experiments/PrepareData/*.class
+rm bin/ExperimentsSMBM/*.class
+rm src/LbjFeatures/*.java 
+
+
+javac -cp $cpath -d bin  ./src/LuceneInterface/*.java ./src/IO/*.java ./src/StringStatisticsUtils/*.java  ./src/LbjTagger/ParametersForLbjCode.java ./src/LbjTagger/NEWord.java  ./src/LbjTagger/NamedEntity.java ./src/LbjTagger/RandomLabelGenerator.java ./src/LbjTagger/ParametersForLbjCode.java ./src/ExpressiveFeatures/Gazzetteers.java ./src/ExpressiveFeatures/BrownClusters.java  ./src/ExpressiveFeatures/WordEmbeddings.java  ./src/ExpressiveFeatures/HmmEmbeddings.java ./src/LbjTagger/TextChunkRepresentationManager.java
+java -cp $cpath LBJ2.Main -d bin -gsp src LbjTagger.lbj
+javac -cp $cpath -d bin ./src/LbjFeatures/*.java  ./src/ExpressiveFeatures/*.java ./src/LbjTagger/*.java  ./src/ClientServer/*.java  ./src/DebuggingAndTesting/*.java  ./src/ParsingProcessingData/*.java  ./src/InferenceMethods/*.java
+javac -cp $cpath -d bin ./src/Experiments/NaaclExperiments/*.java  ./src/Experiments/PrepareData/*.java ./src/Experiments/*.java ./src/LuceneInterface/*.java ./src/Experiments/ExperimentsNoConvergence/*.java ./src/Experiments/ExperimentsHMM/*.java ./src/ExperimentsSMBM/*.java
+
+
+#cd bin
+#jar cmf mainClass LbjNerTagger.jar *
+#mv LbjNerTagger.jar ..
+#cd ..
