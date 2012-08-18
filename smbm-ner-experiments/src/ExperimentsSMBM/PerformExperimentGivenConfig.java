@@ -28,8 +28,8 @@ public class PerformExperimentGivenConfig {
 		String devDataPath = Parameters.pathToTrainDevTest + "Dev";
 		
 		Vector<Data> testData=readData(testDataPath,"testSplit");
+        Vector<Data> devData=readData(devDataPath, "devSplit");
 		Vector<Data> trainData=readData(trainDataPath,"trainSplit");
-		Vector<Data> devData=readData(devDataPath, "devSplit");
 		//tuning on the in-domain data (CoNLL test)
 		String originalModelPath=ParametersForLbjCode.pathToModelFile;
 		String originalLogFile=ParametersForLbjCode.debuggingLogPath;

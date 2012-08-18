@@ -19,6 +19,117 @@ available shortly.
 
 [turian]: http://metaoptimize.com/projects/wordreprs/
 
+## Replicating the Experiments ##
+
+With the data and code provided on this page you can replicate the experiments conducted for Stenetorp et al. (2012).
+In case you have problems please let us know.
+
+### Setup ###
+
+After cloning this repository you will have to download the wordrepresentations and 
+the corpora that were used for evaluation and unpack them to their respective folders.
+
+Please download and unpack the archive containing formatted versions of the AnEM, Disease and GeneTag corpora from (to be delivered).
+Organize them in the following way in your local data folder.
+
+    data
+    ├── ...
+    ├── GoldData
+    │   ├── AnEM
+    │   │   ├── Dev
+    │   │   ├── Test 
+    │   │   └── Train
+    │   ├── Disease
+    │   │   ├── Dev
+    │   │   ├── Test
+    │   │   └── Train
+    │   └── GeneTag
+    │       ├── Dev
+    │       ├── Test 
+    │       └── Train
+    └── ...
+
+Next, download the NER-Experiments folder provided by Turian et al. (2010) from 
+[here][turian-ner] and copy the folders "data/WordEmbedding" and "data/BrownHierarchicalWordClusters" to your data folder.  
+Move the current content of your "data/BrownHierarchicalWordClusters" folder
+to a new subfolder called "data/BrownHierarchicalWordClusters/outDomain".
+
+Finally download the representations introduced by Stenetorp et al. (2012) from (to be delivered)
+and unpack the Brown-clusters to "data/BrownHierarchicalWordClusters/inDomain" and the distributed word representations to 
+"data/WordEmbedding".
+
+[turian-ner]: http://cogcomp.cs.illinois.edu/Data/ACL2010_NER_Experiments.php
+
+In the end you should have the following structure in your data folder.
+
+    data
+    ├── BrownHierarchicalWordClusters
+    │   ├── inDomain
+    │   │   ├── c1000.txt
+    │   │   ├── c100.txt
+    │   │   ├── c150.txt
+    │   │   ├── c320.txt
+    │   │   ├── c500.txt
+    │   └── outDomain
+    │       ├── brown-rcv1.clean.tokenized-CoNLL03.txt-c1000-freq1.lowerCase.txt
+    │       ├── brown-rcv1.clean.tokenized-CoNLL03.txt-c1000-freq1.txt
+    │       ├── brown-rcv1.clean.tokenized-CoNLL03.txt-c1000-freq1.upperCase.txt
+    │       ├── brown-rcv1.clean.tokenized-CoNLL03.txt-c100-freq1.txt
+    │       ├── brown-rcv1.clean.tokenized-CoNLL03.txt-c3200-freq1.txt
+    │       └── brown-rcv1.clean.tokenized-CoNLL03.txt-c320-freq1.txt
+    ├── GoldData
+    │   └── ...
+    ├── Models
+    └── WordEmbedding
+        ├── david.txt
+        ├── google-phrasal-clusers.txt
+        ├── hlbl_reps_clean_1.rcv1.clean.tokenized-CoNLL03.case-intact.txt
+        ├── hlbl_reps_clean_2.50d.rcv1.clean.tokenized-CoNLL03.case-intact.txt
+        ├── model-1750000000.LEARNING_RATE=1e-09.EMBEDDING_LEARNING_RATE=1e-06.EMBEDDING_SIZE=200.txt
+        ├── model-2030000000.LEARNING_RATE=1e-09.EMBEDDING_LEARNING_RATE=1e-06.EMBEDDING_SIZE=100.txt
+        ├── model-2280000000.LEARNING_RATE=1e-08.EMBEDDING_LEARNING_RATE=1e-07.EMBEDDING_SIZE=25.txt
+        └── model-2280000000.LEARNING_RATE=1e-08.EMBEDDING_LEARNING_RATE=1e-07.EMBEDDING_SIZE=50.txt
+        
+        
+### Running an experiment ###
+
+Each experiment has one corresponding config file that specifies its parameters.
+The config files are located in the "config" directory and named according to the following scheme:
+    
+    {CorpusName}-[(bio)|(news)]+-domain-{wordreptype-info}+.config
+    
+Therefore, the names start with a corpus-identifier followed by one or multiple occurences of 
+"bio" or "news" followed by "-domain-" and one or multiple occurences of wordrepresentation identifiers.
+Each "bio"/"news" corresponds to one wordreptype-info and indicates whether a wordrepresnentation was induced on 
+bio or news data. The first "bio"/"news" correponds to the first wordreptype-info, the second to the second
+wordreptype-info and so on.
+
+    Corpus identifiers:
+        AnEM = AnEM
+        Disease = NCBID
+        GeneTag = BC2GM
+        
+Example:
+
+    GeneTag-bio-news-domain-clarkne-hlbl.config
+
+This means: The experiment will be conducted on the GeneTag(BC2GM) corpus and ClarkNE representations 
+induced on bio-data will be used in combination with HLBL representations induced on newswire data.
+
+All parameters available in the config files are identical to the ones from Turian et al. (2010) with one exception.
+The newly introduced parameter "pathToTrainDevTest" specifies the directory where your corpus Train/Dev/Test split is avaiable.
+
+Example program call:
+
+    nohup nice java -Xmx4000m -classpath LBJ2.jar:LBJ2Library.jar:bin:stanford-ner.jar:stanford-ner.src.jar:lucene-core-2.4.1.jar \
+                    ExperimentsSMBM/PerformExperimentGivenConfig  \
+                    ../config/AnEM-bio-news-bio-domain-clarkne-hlbl-brown.config \
+                    > smbm.contra.result-AnEM-bio-news-bio-domain-clarkne-hlbl-brown.txt  &
+
+
+You may need to allow for more than 4000m of memory especially for the Google-Phrase-Cluster runs.
+
+
 ## Citing ##
 
 If you use the code without any word representations please cite:
