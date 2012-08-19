@@ -98,10 +98,10 @@ The config files are located in the "config" directory and named according to th
     
     {CorpusName}-[(bio)|(news)]+-domain-{wordreptype-info}+.config
     
-Therefore, the names start with a corpus-identifier followed by one or multiple occurences of 
-"bio" or "news" followed by "-domain-" and one or multiple occurences of wordrepresentation identifiers.
+Therefore, the names start with a corpus-identifier followed by one or multiple occurrences of 
+"bio" or "news" followed by "-domain-" and one or multiple occurrences of wordrepresentation identifiers.
 Each "bio"/"news" corresponds to one wordreptype-info and indicates whether a wordrepresnentation was induced on 
-bio or news data. The first "bio"/"news" correponds to the first wordreptype-info, the second to the second
+bio or news data. The first "bio"/"news" corresponds to the first wordreptype-info, the second to the second
 wordreptype-info and so on.
 
     Corpus identifiers:
@@ -119,6 +119,15 @@ induced on bio-data will be used in combination with HLBL representations induce
 All parameters available in the config files are identical to the ones from Turian et al. (2010) with two exceptions.
 The newly introduced parameter "pathToTrainDevTest" specifies the directory where your corpus Train/Dev/Test split is avaiable.
 The "isUppercaseWordEmbeddings" parameter specifies for each used wordrepresentation files whether it is uppercased only.
+
+Before you can run your first experiment, you will have to run 
+
+    ./cleanCompile
+    
+from within your smbm-ner-experiments folder.
+
+Now you can start experiments by using modified versions of the example command below.
+Note that the command below must be executed from within your smbm-ner-experiments folder.
 
 Example program call:
 
