@@ -133,8 +133,8 @@ Example program call:
 
     nohup nice java -Xmx4000m -classpath LBJ2.jar:LBJ2Library.jar:bin:stanford-ner.jar:stanford-ner.src.jar:lucene-core-2.4.1.jar \
                     ExperimentsSMBM/PerformExperimentGivenConfig  \
-                    ../config/AnEM-bio-news-bio-domain-clarkne-hlbl-brown.config \
-                    > smbm.contra.result-AnEM-bio-news-bio-domain-clarkne-hlbl-brown.txt  &
+                    ../config/AnEM-bio-domain-brown-c1000.config \
+                    > smbm.contra.result.AnEM-bio-domain-brown-c1000.txt  &
 
 
 You may need to allow for more than 4000m of memory especially for the Google-Phrase-Cluster runs.
