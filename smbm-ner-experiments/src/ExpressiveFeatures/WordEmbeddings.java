@@ -18,6 +18,7 @@ public class WordEmbeddings {
 	public  enum NormalizationMethod {INDEPENDENT,OVERALL};
 	
 	public static Vector<Boolean> isLowecasedEmbeddingByResource=null;
+	public static Vector<Boolean> isUppercasedEmbeddingByResource=null;
 	public static Vector<String> resources=null;
 	public static Vector<Integer> dimensionalities=null;
 	public static int dimensionalitiesSum=0;
@@ -27,12 +28,13 @@ public class WordEmbeddings {
 	 * For now, the parameter minWordAppearanceThres is not used, but I'm planning to use it
 	 * like I was using the word appearance thresholds on Brown Clusters
 	 */
-	public static void init(Vector<String> filenames,Vector<Integer> embeddingDimensionality,Vector<Integer> minWordAppearanceThres,Vector<Boolean> isLowecasedEmbedding,Vector<Double> normalizationConstant,Vector<NormalizationMethod> methods) throws Exception{
+	public static void init(Vector<String> filenames,Vector<Integer> embeddingDimensionality,Vector<Integer> minWordAppearanceThres,Vector<Boolean> isLowecasedEmbedding,Vector<Boolean> isUppercasedEmbedding,Vector<Double> normalizationConstant,Vector<NormalizationMethod> methods) throws Exception{
 		dimensionalitiesSum=0;
 		dimensionalities=new Vector<Integer>();
 		resources=new Vector<String>();
 		embeddingByResource=new Vector<HashMap<String,double[]>>();
 		isLowecasedEmbeddingByResource=new Vector<Boolean>();
+		isUppercasedEmbeddingByResource=new Vector<Boolean>();
 		for(int resourceId=0;resourceId<filenames.size();resourceId++){
 			HashMap<String, double[]> embedding = new HashMap<String,double[]>();
 			InFile in=new InFile(filenames.elementAt(resourceId));
@@ -73,6 +75,7 @@ public class WordEmbeddings {
 			dimensionalities.addElement(embeddingDimensionality.elementAt(resourceId));
 			resources.addElement(filenames.elementAt(resourceId));
 			isLowecasedEmbeddingByResource.addElement(isLowecasedEmbedding.elementAt(resourceId));
+			isUppercasedEmbeddingByResource.addElement(isUppercasedEmbedding.elementAt(resourceId));
 		}
 	}
 	
@@ -83,6 +86,8 @@ public class WordEmbeddings {
 			String word=w.form;
 			if(isLowecasedEmbeddingByResource.elementAt(resourceId))
 				word=word.toLowerCase();
+            if(isUppercasedEmbeddingByResource.elementAt(resourceId))
+                word=word.toUpperCase();
 			double[] v=new double[dimensionalities.elementAt(resourceId)];
 			for(int i=0;i<v.length;i++)
 				v[i]=0;

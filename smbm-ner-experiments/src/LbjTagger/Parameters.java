@@ -200,6 +200,15 @@ public class Parameters extends ParametersForLbjCode{
 			throw new Exception("Error- expecting the 'isLowercaseWordEmbeddings' parameter, read:"+line);
 		while(st.hasMoreTokens())
 			isLowercaseWordEmbeddings.addElement(Boolean.parseBoolean(st.nextToken()));
+			
+        //reading the next parameter...
+        Vector<Boolean> isUppercaseWordEmbeddings=new Vector<Boolean>();
+        line=in.readLine();
+        st=new StringTokenizer(line,"\t ");
+        if(!st.nextToken().equals("isUppercaseWordEmbeddings"))
+            throw new Exception("Error- expecting the 'isUppercaseWordEmbeddings' parameter, read:"+line);
+        while(st.hasMoreTokens())
+            isUppercaseWordEmbeddings.addElement(Boolean.parseBoolean(st.nextToken()));
 
 		
 		//reading the next parameter...
@@ -260,6 +269,7 @@ public class Parameters extends ParametersForLbjCode{
 				System.out.println("\t-Dimensionality="+dimensionality.elementAt(i));
 				System.out.println("\t-WordThres="+wordAppThresEmbeddings.elementAt(i));
 				System.out.println("\t-IsLowercased="+isLowercaseWordEmbeddings.elementAt(i));
+				System.out.println("\t-IsUppercased="+isUppercaseWordEmbeddings.elementAt(i));
 			}			
 		}
 		
@@ -267,7 +277,7 @@ public class Parameters extends ParametersForLbjCode{
 		if(Parameters.featuresToUse.containsKey("BrownClusterPaths"))
 			BrownClusters.init(pathsToBrownClusters,minWordAppThresholdsForBrownClusters,lowercaseBrown);
 		if(Parameters.featuresToUse.containsKey("WordEmbeddings"))
-			WordEmbeddings.init(pathsToWordEmbeddings,dimensionality,wordAppThresEmbeddings,isLowercaseWordEmbeddings,normalizationConstantsForEmbeddings,normalizationMethodsForEmbeddings);
+			WordEmbeddings.init(pathsToWordEmbeddings,dimensionality,wordAppThresEmbeddings,isLowercaseWordEmbeddings,isUppercaseWordEmbeddings,normalizationConstantsForEmbeddings,normalizationMethodsForEmbeddings);
 		if(Parameters.featuresToUse.containsKey("GazetteersFeatures"))
 			Gazzetteers.init(pathToGazetteers);
 		

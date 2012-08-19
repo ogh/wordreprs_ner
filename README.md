@@ -116,8 +116,9 @@ Example:
 This means: The experiment will be conducted on the GeneTag(BC2GM) corpus and ClarkNE representations 
 induced on bio-data will be used in combination with HLBL representations induced on newswire data.
 
-All parameters available in the config files are identical to the ones from Turian et al. (2010) with one exception.
+All parameters available in the config files are identical to the ones from Turian et al. (2010) with two exceptions.
 The newly introduced parameter "pathToTrainDevTest" specifies the directory where your corpus Train/Dev/Test split is avaiable.
+The "isUppercaseWordEmbeddings" parameter specifies for each used wordrepresentation files whether it is uppercased only.
 
 Example program call:
 

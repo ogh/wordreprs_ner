@@ -37,7 +37,7 @@ public class ParametersForLbjCode {
 	public static RandomLabelGenerator prevPredictionsLevel2RandomGenerator = null;
 	
 	public static String pathToTrainDevTest = null; //Path to a folder that contains a 'Train', 'Dev' and 'Test' folder. Will evaluate Wordreps on that data split
-		
+	
 	public static Hashtable<String,Boolean> featuresToUse=null;
 	
 }
