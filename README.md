@@ -29,7 +29,7 @@ In case you have problems please let us know.
 After cloning this repository you will have to download the wordrepresentations and 
 the corpora that were used for evaluation and unpack them to their respective folders.
 
-Please download and unpack the archive containing formatted versions of the AnEM, Disease and GeneTag corpora from (to be delivered).
+Please download and unpack the archive containing formatted versions of the AnEM, Disease and GeneTag corpora from [here][corpora-ner].
 Organize them in the following way in your local data folder.
 
     data
@@ -49,16 +49,20 @@ Organize them in the following way in your local data folder.
     │       └── Train
     └── ...
 
+[corpora-ner]: http://anonoia.org/webdav/data/stenetorp2012size_ner/stenetorp2012size_ner_corpora.tar.gz
+    
 Next, download the NER-Experiments folder provided by Turian et al. (2010) from 
 [here][turian-ner] and copy the folders "data/WordEmbedding" and "data/BrownHierarchicalWordClusters" to your data folder.  
 Move the current content of your "data/BrownHierarchicalWordClusters" folder
 to a new subfolder called "data/BrownHierarchicalWordClusters/outDomain".
 
-Finally download the representations introduced by Stenetorp et al. (2012) from (to be delivered)
+Finally download the representations introduced by Stenetorp et al. (2012) from [here][data-ner]
 and unpack the Brown-clusters to "data/BrownHierarchicalWordClusters/inDomain" and the distributed word representations to 
 "data/WordEmbedding".
 
+[data-ner]: http://anonoia.org/webdav/data/stenetorp2012size_ner/stenetorp2012size_ner_data.tar.gz
 [turian-ner]: http://cogcomp.cs.illinois.edu/Data/ACL2010_NER_Experiments.php
+
 
 In the end you should have the following structure in your data folder.
 
