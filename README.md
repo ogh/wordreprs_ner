@@ -14,8 +14,7 @@ resources.
 The word representations used by Turian et al. (2010) are available from
 [here][turian].
 
-The word representations used by Stenetorp et al. (2012) will be made
-available shortly.
+The word representations used by Stenetorp et al. (2012) are available [here][data-ner] in a format that is suitable for the NER task.
 
 [turian]: http://metaoptimize.com/projects/wordreprs/
 
