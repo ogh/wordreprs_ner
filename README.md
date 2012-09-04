@@ -188,5 +188,4 @@ Stenetorp et al. (2012) embeddings please cite:
         year        = {2012},
         booktitle   = {Proceedings of the 5th International Symposium on
             Semantic Mining in Biomedicine},
-        note        = {to appear},
     }
