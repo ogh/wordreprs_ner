@@ -48,7 +48,7 @@ Organize them in the following way in your local data folder.
     │       └── Train
     └── ...
 
-[corpora-ner]: http://anonoia.org/webdav/data/stenetorp2012size_ner/stenetorp2012size_ner_corpora.tar.gz
+[corpora-ner]: http://weaver.nlplab.org/~soyerh/data/stenetorp2012size_ner/stenetorp2012size_ner_corpora.tar.gz
     
 Next, download the NER-Experiments folder provided by Turian et al. (2010) from 
 [here][turian-ner] and copy the folders "data/WordEmbedding" and "data/BrownHierarchicalWordClusters" to your data folder.  
@@ -59,7 +59,7 @@ Finally download the representations introduced by Stenetorp et al. (2012) from 
 and unpack the Brown-clusters to "data/BrownHierarchicalWordClusters/inDomain" and the distributed word representations to 
 "data/WordEmbedding".
 
-[data-ner]: http://anonoia.org/webdav/data/stenetorp2012size_ner/stenetorp2012size_ner_data.tar.gz
+[data-ner]: http://weaver.nlplab.org/~soyerh/data/stenetorp2012size_ner/stenetorp2012size_ner_data.tar.gz
 [turian-ner]: http://cogcomp.cs.illinois.edu/Data/ACL2010_NER_Experiments.php
 
 
